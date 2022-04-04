@@ -9,7 +9,15 @@
 // getEmailDomain("t.mellink@novi.nl") geeft novi.nl
 // getEmailDomain("a.wiersma@outlook.com") geeft outlook.com
 
+function getEmailDomain(email) {
+    const domeinnaam = email.indexOf('@');
+    const domein = email.substring(domeinnaam + 1)
+    return domein;
+}
 
+console.log(getEmailDomain('n.eeken@novi-education.nl'));
+console.log(getEmailDomain('t.mellink@novi.nl'))
+console.log(getEmailDomain('a.wiersma@outlook.com'))
 
 
 /* Opdracht  2 */
@@ -20,7 +28,26 @@
 // typeOfEmail("novi.nlaapjesk@outlook.com") geeft geeft "Extern" <-- deze moet het ook doen!
 // typeOfEmail("a.wiersma@outlook.com") geeft "Extern"
 
+function typOfEmail(email) {
+    const domeinnaam = email.indexOf('@');
+    const domein = email.substring(domeinnaam + 1);
 
+    if (domein === 'novi-education.nl') {
+        return 'Student';
+    } else if (domein === 'novi.nl') {
+        return 'Medewerker';
+    } else {
+        return 'Extern'
+    }
+}
+
+const domeinOne = typOfEmail('n.eeken@novi-education.nl')
+const domeinTwo = typOfEmail('t.mellink@novi.nl')
+const domeinThree = typOfEmail('a.wiersma@outlook.com')
+
+console.log(domeinOne);
+console.log(domeinTwo);
+console.log(domeinThree);
 
 /* Opdracht  3 */
 // Schrijf een functie genaamd checkEmailValidity, die een emailadres verwacht en checkt of het emailadres valide is. De functie returned true of false, afhankelijk van de uitkomst.
@@ -34,3 +61,18 @@
 // checkEmailValidity("n.eekenanovi.nl") geeft false - want geen @
 // checkEmailValidity("n.eeken@novinl.") geeft false - want de punt mag niet als laatst
 // checkEmailValidity("tessmellink@novi,nl") geeft false - want er staat een komma in
+
+function checkEmailValidity(emailaddress) {
+    const containsApenstaart = emailaddress.includes('@');
+    const containsKomma = emailaddress.includes(',');
+    const containsPunt = emailaddress.lastIndexOf('.');
+    const containsPuntEinde = containsPunt !== emailaddress.length - 1;
+}
+
+if (containsApenstaart && !containsKomma && containsPuntEinde) {
+    return 'false';
+} else {
+    return 'true';
+}
+
+
